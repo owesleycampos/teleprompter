@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teleprompter para Mac</title>
+<meta name="description" content="Leia seu roteiro olhando para a câmera. Fica na sua tela e não aparece na gravação.">
+<meta property="og:title" content="Teleprompter para Mac">
+<meta property="og:description" content="Leia seu roteiro olhando para a câmera. Fica na sua tela e não aparece na gravação.">
+<meta property="og:image" content="assets/teleprompter.png">
+<link rel="icon" href="assets/icon.png">
+<style>
+  :root {
+    --bg: #111214;
+    --surface: #17181b;
+    --text: #ececee;
+    --muted: #9a9ca3;
+    --faint: rgba(255,255,255,.07);
+    --amber: #f5c77a;
+    --radius: 20px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    background: var(--bg); color: var(--text);
+    font: 17px/1.6 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  main { max-width: 1040px; margin: 0 auto; padding: 96px 24px 120px; }
+  header { text-align: center; }
+  header img.icon { width: 112px; height: 112px; }
+  h1 { font-size: clamp(40px, 6vw, 64px); line-height: 1.05; letter-spacing: -.03em; font-weight: 700; margin-top: 28px; }
+  .lead { color: var(--muted); font-size: 20px; max-width: 560px; margin: 20px auto 0; }
+  .download { margin-top: 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--amber); color: #1a1408; text-decoration: none;
+    font-weight: 600; font-size: 17px; padding: 15px 30px; border-radius: 999px;
+    transition: transform .15s ease, opacity .15s ease;
+  }
+  .btn:hover { transform: translateY(-1px); opacity: .92; }
+  .meta { color: var(--muted); font-size: 14px; }
+  .shot { margin-top: 88px; }
+  .stage {
+    border-radius: var(--radius); overflow: hidden;
+    padding: clamp(20px, 6vw, 72px);
+    background:
+      radial-gradient(120% 90% at 20% 0%, #3a3128 0%, transparent 60%),
+      radial-gradient(100% 80% at 90% 100%, #23262d 0%, transparent 65%),
+      #1b1c20;
+  }
+  .stage img { display: block; width: 100%; height: auto; }
+  .caption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 16px; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-top: 112px; }
+  .features h3 { font-size: 19px; font-weight: 600; letter-spacing: -.01em; }
+  .features p { color: var(--muted); margin-top: 8px; font-size: 16px; }
+  .features .dot { width: 4px; height: 22px; border-radius: 2px; background: var(--amber); margin-bottom: 18px; }
+  section.install { margin-top: 120px; background: var(--surface); border-radius: var(--radius); padding: 56px; }
+  h2 { font-size: 32px; letter-spacing: -.02em; font-weight: 700; }
+  ol { margin-top: 28px; padding-left: 0; list-style: none; counter-reset: step; display: grid; gap: 22px; }
+  ol li { counter-increment: step; display: grid; grid-template-columns: 40px 1fr; color: var(--muted); }
+  ol li::before { content: counter(step); color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+  ol li strong { color: var(--text); font-weight: 600; }
+  .note { margin-top: 36px; padding-top: 28px; border-top: 1px solid var(--faint); color: var(--muted); font-size: 15px; }
+  kbd { font: 13px ui-monospace, SFMono-Regular, Menlo, monospace; background: var(--faint); padding: 2px 7px; border-radius: 6px; color: var(--text); }
+  .keys { margin-top: 120px; }
+  .keys dl { margin-top: 28px; display: grid; grid-template-columns: max-content 1fr; gap: 14px 28px; color: var(--muted); }
+  .keys dt { text-align: right; }
+  footer { margin-top: 120px; text-align: center; color: #5d5f66; font-size: 14px; }
+  @media (max-width: 760px) {
+    main { padding: 64px 16px 80px; }
+    .features { grid-template-columns: 1fr; gap: 36px; margin-top: 80px; }
+    section.install { padding: 32px 24px; margin-top: 80px; }
+    .shot { margin-top: 64px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img class="icon" src="assets/icon.png" alt="">
+    <h1>Teleprompter</h1>
+    <p class="lead">Leia seu roteiro olhando para a câmera. Ele fica na sua tela, mas não aparece na gravação.</p>
+    <div class="download">
+      <a class="btn" href="https://github.com/owesleycampos/teleprompter/releases/latest/download/Teleprompter.dmg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+        Baixar para Mac
+      </a>
+      <span class="meta">Grátis · versão 1.0.0 · macOS 13 ou mais novo · Apple Silicon e Intel · 0,7 MB</span>
+    </div>
+  </header>
+
+  <div class="shot">
+    <div class="stage"><img src="assets/teleprompter.png" alt="Janela do teleprompter mostrando o roteiro com a linha de leitura em destaque"></div>
+    <p class="caption">A linha de leitura fica no alto, perto da câmera. O que já foi lido vai sumindo.</p>
+  </div>
+
+  <div class="features">
+    <div><div class="dot"></div><h3>Some da gravação</h3><p>A janela é marcada para ficar fora de capturas de tela. Você vê, o vídeo não.</p></div>
+    <div><div class="dot"></div><h3>No seu tempo</h3><p>Diga quanto tempo o vídeo deve ter e ele ajusta a velocidade. Ou acelere e desacelere com as setas.</p></div>
+    <div><div class="dot"></div><h3>Roteiros salvos</h3><p>Escreva, organize e reabra seus roteiros. Tudo fica salvo no seu Mac, sem conta e sem internet.</p></div>
+  </div>
+
+  <div class="shot">
+    <div class="stage"><img src="assets/editor.png" alt="Editor de roteiros com lista à esquerda e texto no centro"></div>
+    <p class="caption">O editor: roteiros, duração, tamanho da letra e opacidade do fundo.</p>
+  </div>
+
+  <section class="install">
+    <h2>Como instalar</h2>
+    <ol>
+      <li><span>Baixe o arquivo <strong>Teleprompter.dmg</strong> e abra.</span></li>
+      <li><span>Arraste o <strong>Teleprompter</strong> para a pasta <strong>Aplicativos</strong>.</span></li>
+      <li><span>Abra o app. Como ele não é distribuído pela App Store, o Mac vai avisar que não pode verificar o desenvolvedor. Feche o aviso.</span></li>
+      <li><span>Vá em <strong>Ajustes do Sistema → Privacidade e Segurança</strong>, role até o fim e clique em <strong>Abrir Mesmo Assim</strong>. No macOS 13 e 14 também dá para clicar com o botão direito no app e escolher <strong>Abrir</strong>.</span></li>
+      <li><span>Pronto. Para deixar no Dock, clique com o botão direito no ícone e escolha <strong>Opções → Manter no Dock</strong>.</span></li>
+    </ol>
+    <p class="note">A invisibilidade funciona com a maioria dos gravadores e apps de chamada, mas alguns podem ignorar essa marcação. Antes de gravar algo importante, faça um teste rápido com o seu.</p>
+  </section>
+
+  <section class="keys">
+    <h2>Atalhos</h2>
+    <dl>
+      <dt><kbd>Espaço</kbd></dt><dd>Começar ou pausar</dd>
+      <dt><kbd>↑</kbd> <kbd>↓</kbd></dt><dd>Mais rápido / mais devagar</dd>
+      <dt><kbd>⌘</kbd> <kbd>+</kbd> <kbd>−</kbd></dt><dd>Letra maior / menor</dd>
+      <dt><kbd>R</kbd></dt><dd>Voltar ao início</dd>
+      <dt><kbd>Esc</kbd></dt><dd>Fechar o teleprompter</dd>
+      <dt><kbd>⌘</kbd> <kbd>↩</kbd></dt><dd>Abrir o teleprompter a partir do editor</dd>
+    </dl>
+  </section>
+
+  <footer>Teleprompter 1.0.0</footer>
+</main>
+</body>
+</html>
