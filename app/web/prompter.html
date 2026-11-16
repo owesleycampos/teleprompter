@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#111214">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<title>Teleprompter</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="prompter.css">
+</head>
+<body class="prompter-page">
+<div class="prompter" id="prompter">
+  <div class="viewport" id="viewport">
+    <div class="doc" id="doc"><div class="text" id="text"></div></div>
+  </div>
+  <div class="marker" id="marker"></div>
+
+  <div class="controls" id="controls">
+    <div class="group left">
+      <button class="icon-btn" id="closeBtn" title="Fechar (Esc)"></button>
+    </div>
+    <div class="group center">
+      <button class="icon-btn" id="restartBtn" title="Voltar ao início (R)"></button>
+      <button class="icon-btn play" id="playBtn" title="Começar / pausar (Espaço)"></button>
+      <button class="icon-btn" id="slowerBtn" title="Mais devagar (↓)"></button>
+      <span class="label speed" id="speedLabel">1.0×</span>
+      <button class="icon-btn" id="fasterBtn" title="Mais rápido (↑)"></button>
+    </div>
+    <div class="group right">
+      <button class="icon-btn" id="smallerBtn" title="Letra menor (Ctrl/⌘ −)"></button>
+      <button class="icon-btn" id="largerBtn" title="Letra maior (Ctrl/⌘ +)"></button>
+      <button class="icon-btn native-only" id="layoutBtn" title="Posição e tamanho da janela"></button>
+      <button class="icon-btn web-only" id="fullscreenBtn" title="Tela cheia"></button>
+      <span class="label time" id="timeLabel">0:00</span>
+    </div>
+  </div>
+
+  <div class="layout-panel hidden" id="layoutPanel" role="dialog" aria-label="Posição e tamanho">
+    <div class="lp-col">
+      <div class="lp-title">Posição</div>
+      <div class="screen-map" id="screenMap">
+        <button data-pos="topLeft" title="No topo, à esquerda"></button>
+        <button data-pos="topCenter" title="No topo, centro (perto da câmera)"></button>
+        <button data-pos="topRight" title="No topo, à direita"></button>
+        <button data-pos="center" title="No centro da tela"></button>
+        <button data-pos="bottomCenter" title="Embaixo, centro"></button>
+      </div>
+    </div>
+    <div class="lp-col">
+      <div class="lp-title">Tamanho</div>
+      <div class="pills" id="sizePills">
+        <button data-size="small" title="Pequeno (Ctrl/⌘ 1)">P</button>
+        <button data-size="medium" title="Médio (Ctrl/⌘ 2)">M</button>
+        <button data-size="large" title="Grande (Ctrl/⌘ 3)">G</button>
+        <button data-size="fullWidth" title="Largura total (Ctrl/⌘ 4)">Largura</button>
+      </div>
+      <div class="lp-title screens-title hidden" id="screensTitle">Tela</div>
+      <div class="pills" id="screenPills"></div>
+    </div>
+    <button class="icon-btn lp-close" id="layoutClose" title="Fechar"></button>
+  </div>
+
+  <div class="countdown hidden" id="countdown"></div>
+  <div class="progress"><div class="fill" id="progressFill"></div></div>
+  <div class="grip native-only" id="grip" title="Arraste para mudar o tamanho"></div>
+  <div class="hint hidden" id="hint"></div>
+</div>
+<script src="../core/engine.js"></script>
+<script src="storage.js"></script>
+<script src="icons.js"></script>
+<script src="prompter.js"></script>
+</body>
+</html>

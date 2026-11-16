@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Teleprompter">
+<meta name="theme-color" content="#111214">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<title>Teleprompter</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="editor.css">
+</head>
+<body class="editor-page">
+<div class="titlebar-drag"></div>
+<div class="editor">
+  <aside class="sidebar">
+    <div class="side-head">
+      <span class="side-title">Roteiros</span>
+      <div class="side-actions">
+        <button class="icon-btn" id="newBtn" title="Novo roteiro (Ctrl/⌘ N)"></button>
+        <button class="icon-btn" id="deleteBtn" title="Apagar roteiro"></button>
+      </div>
+    </div>
+    <ul class="list" id="list"></ul>
+    <select class="list-select" id="listSelect" aria-label="Escolher roteiro"></select>
+  </aside>
+
+  <main class="main">
+    <input class="title" id="title" placeholder="Título do roteiro" autocomplete="off" spellcheck="false">
+    <textarea class="body" id="body" placeholder="Cole ou escreva seu roteiro aqui…" spellcheck="true"></textarea>
+    <footer class="bar">
+      <div class="bar-top">
+        <span class="stats" id="stats"></span>
+        <button class="primary" id="openBtn" title="Ctrl/⌘ Enter">Abrir teleprompter</button>
+      </div>
+      <div class="prefs">
+        <label class="pref">Duração
+          <input id="duration" class="duration" placeholder="auto" inputmode="text" autocomplete="off"
+                 title="Tempo total de leitura: 90, 1:30 ou 2m. Vazio = automático pelo ritmo de fala.">
+        </label>
+        <label class="pref">Letra
+          <input id="font" type="range" min="18" max="96" step="1">
+          <span class="val" id="fontVal">34</span>
+        </label>
+        <label class="pref native-only">Fundo
+          <input id="opacity" type="range" min="0.4" max="1" step="0.01" title="Opacidade do fundo do teleprompter">
+        </label>
+        <label class="pref check"><input id="countdown" type="checkbox"> Contagem</label>
+      </div>
+    </footer>
+  </main>
+</div>
+<script src="../core/engine.js"></script>
+<script src="storage.js"></script>
+<script src="icons.js"></script>
+<script src="editor.js"></script>
+</body>
+</html>

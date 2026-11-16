@@ -72,6 +72,16 @@
     section.install { padding: 32px 24px; margin-top: 80px; }
     .shot { margin-top: 64px; }
   }
+  .btns { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+  .btn.secondary { background: rgba(255,255,255,.08); color: var(--text); }
+  .btn.secondary:hover { background: rgba(255,255,255,.13); opacity: 1; }
+  .btn small { font-weight: 500; opacity: .7; font-size: 13px; }
+  .platforms { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 28px; }
+  .platforms h3 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+  .platforms ol { margin-top: 0; gap: 12px; font-size: 15px; }
+  .platforms ol li { grid-template-columns: 26px 1fr; }
+  .card { background: rgba(255,255,255,.035); border-radius: 14px; padding: 24px; }
+  @media (max-width: 900px) { .platforms { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -79,13 +89,19 @@
   <header>
     <img class="icon" src="assets/icon.png" alt="">
     <h1>Teleprompter</h1>
-    <p class="lead">Leia seu roteiro olhando para a câmera. Ele fica na sua tela, mas não aparece na gravação.</p>
+    <p class="lead">Leia seu roteiro olhando para a câmera. No computador ele fica na sua tela, mas não aparece na gravação.</p>
     <div class="download">
-      <a class="btn" href="https://github.com/owesleycampos/teleprompter/releases/latest/download/Teleprompter.dmg">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
-        Baixar para Mac
-      </a>
-      <span class="meta">Grátis · versão 1.0.0 · macOS 13 ou mais novo · Apple Silicon e Intel · 0,7 MB</span>
+      <div class="btns" id="btns">
+        <a class="btn" data-os="mac" href="https://github.com/owesleycampos/teleprompter/releases/latest/download/Teleprompter-mac-arm64.dmg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+          Mac <small>Apple Silicon</small>
+        </a>
+        <a class="btn secondary" data-os="mac-intel" href="https://github.com/owesleycampos/teleprompter/releases/latest/download/Teleprompter-mac-x64.dmg">Mac <small>Intel</small></a>
+        <a class="btn secondary" data-os="win" href="https://github.com/owesleycampos/teleprompter/releases/latest/download/Teleprompter-windows.exe">Windows</a>
+        <a class="btn secondary" data-os="tablet" href="app/web/">Tablet e celular</a>
+      </div>
+      <span class="meta">Grátis · versão 2.0.0 · macOS 12+ e Windows 10/11 (cerca de 120 MB) · tablet e celular abrem direto no navegador</span>
+      <span class="meta">Mac: em  → Sobre este Mac, se aparecer “Apple M…”, baixe Apple Silicon; se aparecer “Intel”, baixe Intel.</span>
     </div>
   </header>
 
@@ -95,9 +111,14 @@
   </div>
 
   <div class="features">
-    <div><div class="dot"></div><h3>Some da gravação</h3><p>A janela é marcada para ficar fora de capturas de tela. Você vê, o vídeo não.</p></div>
-    <div><div class="dot"></div><h3>No seu tempo</h3><p>Diga quanto tempo o vídeo deve ter e ele ajusta a velocidade. Ou acelere e desacelere com as setas.</p></div>
-    <div><div class="dot"></div><h3>Roteiros salvos</h3><p>Escreva, organize e reabra seus roteiros. Tudo fica salvo no seu Mac, sem conta e sem internet.</p></div>
+    <div><div class="dot"></div><h3>Some da gravação</h3><p>No Mac e no Windows a janela fica fora de capturas de tela. Você vê, o vídeo não.</p></div>
+    <div><div class="dot"></div><h3>Onde e do tamanho que quiser</h3><p>Escolha a posição num mapinha da tela, troque entre pequeno, médio, grande ou largura total, ou arraste o canto.</p></div>
+    <div><div class="dot"></div><h3>No seu tempo</h3><p>Diga quanto tempo o vídeo deve ter e ele ajusta a velocidade. Roteiros ficam salvos no seu aparelho, sem conta.</p></div>
+  </div>
+
+  <div class="shot">
+    <div class="stage"><img src="assets/layout.png" alt="Painel de posição e tamanho do teleprompter"></div>
+    <p class="caption">Clique no ícone de tela nos controles: posição, tamanho e em qual monitor ele aparece.</p>
   </div>
 
   <div class="shot">
@@ -107,29 +128,65 @@
 
   <section class="install">
     <h2>Como instalar</h2>
-    <ol>
-      <li><span>Baixe o arquivo <strong>Teleprompter.dmg</strong> e abra.</span></li>
-      <li><span>Arraste o <strong>Teleprompter</strong> para a pasta <strong>Aplicativos</strong>.</span></li>
-      <li><span>Abra o app. Como ele não é distribuído pela App Store, o Mac vai avisar que não pode verificar o desenvolvedor. Feche o aviso.</span></li>
-      <li><span>Vá em <strong>Ajustes do Sistema → Privacidade e Segurança</strong>, role até o fim e clique em <strong>Abrir Mesmo Assim</strong>. No macOS 13 e 14 também dá para clicar com o botão direito no app e escolher <strong>Abrir</strong>.</span></li>
-      <li><span>Pronto. Para deixar no Dock, clique com o botão direito no ícone e escolha <strong>Opções → Manter no Dock</strong>.</span></li>
-    </ol>
-    <p class="note">A invisibilidade funciona com a maioria dos gravadores e apps de chamada, mas alguns podem ignorar essa marcação. Antes de gravar algo importante, faça um teste rápido com o seu.</p>
+    <div class="platforms">
+      <div class="card">
+        <h3>Mac</h3>
+        <ol>
+          <li><span>Abra o <strong>.dmg</strong> e arraste o Teleprompter para <strong>Aplicativos</strong>.</span></li>
+          <li><span>Abra o app. O Mac vai avisar que não pode verificar o desenvolvedor: feche o aviso.</span></li>
+          <li><span>Em <strong>Ajustes do Sistema → Privacidade e Segurança</strong>, clique em <strong>Abrir Mesmo Assim</strong>.</span></li>
+          <li><span>Para fixar: botão direito no ícone do Dock → <strong>Opções → Manter no Dock</strong>.</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Windows</h3>
+        <ol>
+          <li><span>Abra o <strong>Teleprompter-windows.exe</strong>.</span></li>
+          <li><span>Se aparecer “O Windows protegeu o computador”, clique em <strong>Mais informações → Executar assim mesmo</strong>.</span></li>
+          <li><span>Ele instala sozinho e cria um atalho no menu Iniciar.</span></li>
+        </ol>
+      </div>
+      <div class="card">
+        <h3>Tablet e celular</h3>
+        <ol>
+          <li><span>Toque em <strong>Tablet e celular</strong> lá em cima.</span></li>
+          <li><span>No iPad/iPhone: <strong>Compartilhar → Adicionar à Tela de Início</strong>. No Android: menu <strong>⋮ → Adicionar à tela inicial</strong>.</span></li>
+          <li><span>Toque no texto para começar e pausar; arraste para ajustar.</span></li>
+        </ol>
+      </div>
+    </div>
+    <p class="note">A invisibilidade na gravação vale para o app de Mac e de Windows e funciona com a maioria dos gravadores, mas alguns podem ignorá-la: faça um teste antes de gravar algo importante. No tablet e no celular o texto aparece em gravações de tela; use o aparelho como teleprompter ao lado da câmera.</p>
   </section>
 
   <section class="keys">
     <h2>Atalhos</h2>
     <dl>
-      <dt><kbd>Espaço</kbd></dt><dd>Começar ou pausar</dd>
+      <dt><kbd>Espaço</kbd></dt><dd>Começar ou pausar (no tablet: toque no texto)</dd>
       <dt><kbd>↑</kbd> <kbd>↓</kbd></dt><dd>Mais rápido / mais devagar</dd>
-      <dt><kbd>⌘</kbd> <kbd>+</kbd> <kbd>−</kbd></dt><dd>Letra maior / menor</dd>
+      <dt><kbd>⌘/Ctrl</kbd> <kbd>+</kbd> <kbd>−</kbd></dt><dd>Letra maior / menor</dd>
+      <dt><kbd>⌘/Ctrl</kbd> <kbd>1</kbd>–<kbd>4</kbd></dt><dd>Tamanho: pequeno, médio, grande, largura total</dd>
+      <dt><kbd>⌘/Ctrl</kbd> <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> <kbd>0</kbd></dt><dd>Posição: topo esquerda, topo centro, topo direita, embaixo, centro</dd>
       <dt><kbd>R</kbd></dt><dd>Voltar ao início</dd>
       <dt><kbd>Esc</kbd></dt><dd>Fechar o teleprompter</dd>
-      <dt><kbd>⌘</kbd> <kbd>↩</kbd></dt><dd>Abrir o teleprompter a partir do editor</dd>
+      <dt><kbd>⌘/Ctrl</kbd> <kbd>↩</kbd></dt><dd>Abrir o teleprompter a partir do editor</dd>
     </dl>
   </section>
 
-  <footer>Teleprompter 1.0.0</footer>
+  <footer>Teleprompter 2.0.0</footer>
 </main>
+<script>
+  // Destaca o botão do sistema de quem está visitando
+  (function () {
+    var ua = navigator.userAgent, os = null;
+    if (/iPad|iPhone|Android/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) os = 'tablet';
+    else if (/Windows/.test(ua)) os = 'win';
+    else if (/Macintosh/.test(ua)) os = 'mac';
+    if (!os || os === 'mac') return;
+    var btns = document.getElementById('btns');
+    btns.querySelectorAll('.btn').forEach(function (b) { b.classList.toggle('secondary', b.dataset.os !== os); });
+    var main = btns.querySelector('[data-os="' + os + '"]');
+    btns.insertBefore(main, btns.firstChild);
+  })();
+</script>
 </body>
 </html>

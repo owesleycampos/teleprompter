@@ -1,3 +1,3 @@
-# Teleprompter para Mac
+# Teleprompter
 
-Baixe em https://owesleycampos.github.io/teleprompter/
+Baixe ou use no navegador: https://owesleycampos.github.io/teleprompter/
